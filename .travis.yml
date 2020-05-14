@@ -1,8 +1,7 @@
 language: java
 jdk:
   - openjdk8
-services:
-  - mysql
+  
 before_install:
   - chmod +x mvnw
-  - mysql -u root --password="#Zxc12369" < test/travis.sql
+   
