@@ -22,7 +22,7 @@ public class ApiRestfulSpringbootReferenciaApplication {
 		SpringApplication.run(ApiRestfulSpringbootReferenciaApplication.class, args);
 	}
 	
-	@Bean
+	/*@Bean
 	public CommandLineRunner commandLineRunner(){
 		return args ->{
 			
@@ -51,6 +51,6 @@ public class ApiRestfulSpringbootReferenciaApplication {
 			empresas = empresaRepository.findAll();
 			System.out.println("Empresas: " + empresas.size());
 		};
-	}
+	}*/
 
 }
