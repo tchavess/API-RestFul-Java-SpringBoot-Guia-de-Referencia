@@ -9,24 +9,31 @@ public class Response<T> {
 	private List<String> errors;
 	public Response() {
 	}
+
 	public T getData() {
 		return data;
 	}
+
 	public void setData(T data) {
 		this.data = data;
 	}
+
 	public List<String> getErrors() {
+		if(this.errors == null){
+			this.errors = new ArrayList<>();
+		}
 		return errors;
 	}
-	public void setErros(List<String> errors) {
-		if(this.errors == null) {
-			this.errors = new ArrayList<String>();
-		}
+
+	public void setErrors(List<String> errors) {
 		this.errors = errors;
 	}
-	
-	
-	
-	
 
+	@Override
+	public String toString() {
+		return "Response{" +
+						"data=" + data +
+						", errors=" + errors +
+						'}';
+	}
 }
