@@ -21,7 +21,7 @@ import com.tchaves.api.utils.SenhaUtils;
 public class ApiRestfulSpringbootReferenciaApplication {
 
   @Autowired
-  private ClienteRepository repository;
+  private UsuarioRepository usuarioRepository;
 
   public static void main(String[] args) {
     SpringApplication.run(ApiRestfulSpringbootReferenciaApplication.class, args);
@@ -31,24 +31,17 @@ public class ApiRestfulSpringbootReferenciaApplication {
   public CommandLineRunner commandLineRunner() {
     return args -> {
 
-      repository.save(new Cliente("Alice", 20));
-      repository.save(new Cliente("João", 30));
-      repository.save(new Cliente("Maria", 40));
+      Usuario usuario = new Usuario();
+      usuario.setEmail("usuario@email.com");
+      usuario.setPerfil(PerfilEnum.ROLE_USUARIO);
+      usuario.setSenha(SenhaUtils.gerarBCrypt("123456"));
+      this.usuarioRepository.save(usuario);
 
-      System.out.println("Lista todos com o findAll():");
-      System.out.println("-------------------------------");
-      repository.findAll().forEach(System.out::println);
-      System.out.println();
-
-      System.out.println("Busca um único cliente com o findByNome('Alice'):");
-      System.out.println("--------------------------------");
-      System.out.println(repository.findByNome("Alice"));
-      System.out.println();
-
-      System.out.println("Clientes com idade entre 18 and 35:");
-      System.out.println("--------------------------------");
-      repository.findByIdadeBetween(18, 35).forEach(System.out::println);
-
+      Usuario admin = new Usuario();
+      admin.setEmail("admin@email.com");
+      admin.setPerfil(PerfilEnum.ROLE_ADMIN);
+      admin.setSenha(SenhaUtils.gerarBCrypt("123456"));
+      this.usuarioRepository.save(admin);
 
     };
   }
